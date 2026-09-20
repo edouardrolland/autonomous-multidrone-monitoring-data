@@ -71,12 +71,5 @@ cd scripts
 python3 reproduce_statistics.py
 ```
 
-Figures can be generated with:
-
-```bash
-python3 make_all_figures.py
-```
-
-
 The scripts reproduce the statistical results and the main data-driven figures reported in the paper.
 The definitions and parameters used in this archive follow the implementation and analysis used in the paper.
