@@ -1,0 +1,62 @@
+scope,parameter,value,unit,notes
+objective,surfaces_of_interest,dorsal,left_flank,right_flank
+objective,surface_sample_grid,4x4,,sample points per surface
+objective,framing_exponent,4,,
+objective,field_of_view_diag,82.9,deg,deployed camera
+objective,distance_min_identification,60,m,d_min of the simulation campaigns
+objective,distance_max_identification,150,m,d_max
+solver,number_of_particles,100,count,cold-start budget
+solver,number_of_pso_iteration,100,count,cold-start budget
+solver,start_init,random,,
+solver,use_centroid_bounds,True,,
+swarm,start_altitude,30,m,altitude of the first deconfliction slot
+swarm,vertical_separation,15,m,spacing between slots
+swarm,altitude_slots,9,count,capacity of the deconfliction scheme
+swarm,search_buffer,100,m,D_max = r_herd + buffer
+tuning,tpe_trials_per_regime,100,count,
+tuning,configurations_per_regime,108,count,herd size (4) x drones (3) x two 3-level factors
+validation,repetitions_per_snapshot,10,count,
+validation,snapshots_per_configuration,3,count,
+validation,tost_delta,0.005,,equivalence margin on config-mean Omega
+validation,statistical_unit,configuration mean,,108 paired values per regime and controller
+validation,holm_family_size,6,count,"specialist vs mismatched specialist, over three regimes"
+validation,controllers_released,4,count,three specialists and the untuned default
+scalability,grid,N_a x M x sigma,,5 x 9 x 10 with 10 herd seeds and 5 PSO repetitions
+scalability,total_runs,22500,count,
+scalability,hardware,Intel Core i7-13700HX,,24 concurrent single-threaded workers
+scalability,t_ref_seconds,6.17,s,"mean solve of the cheapest cell (M=1, N_a=10); all costs are normalised by it"
+scalability,python,3.10.12,,
+scalability,numpy,2.2.6,,
+scalability,scipy,1.15.3,,
+scalability,git_commit,87bc88477a5ecc651cc2afd29d721a0d865709b7,,commit that produced the runs
+field,site,"Ol Pejeta Conservancy, Kenya",,WildDrone 2026 campaign
+field,species,Plains zebra (Equus quagga),,
+field,pso_w,0.567,,flown throughout the campaign
+field,pso_c1,2.196,,
+field,pso_c2,0.872,,
+field,detector_confidence_threshold,0.2,,deployed YOLO threshold on the 1280x720 stream
+field,processing_resolution,1280x720,px,detector input
+field,gt_frame_interval,8,s,scout frames sampled uniformly
+field,match_gate,15,m,label-to-detection association gate
+field,coverage_threshold_tau,0.5,,reporting convention only
+field,coverage_frames_monitoring_window,215,count,scope of the pooled coverage percentages reported in the text
+field,coverage_frames_on_target,176,count,scope of the per-mission coverage figure
+field,n_missions,4,count,
+field,n_solves,187,count,online optimisation cycles across the campaign
+field,excluded_mission,230226_m2,,"second 23 Feb mission, quarantined by the synchronisation check and excluded from every reported number"
+field:F1,monitoring_drones,2,count,mission_2026-02-21_15-40-59_0.db3
+field:F1,solves,53,count,
+field:F1,onstation_duration,316,s,
+field:F1,d_min,60,m,as published on /pso_configuration during the flight
+field:F2,monitoring_drones,3,count,mission_2026-02-23_08-55-12_0.db3
+field:F2,solves,23,count,
+field:F2,onstation_duration,416,s,
+field:F2,d_min,60,m,as published on /pso_configuration during the flight
+field:F3,monitoring_drones,3,count,mission_2026-02-24_13-35-16_0.db3
+field:F3,solves,55,count,
+field:F3,onstation_duration,622.5,s,
+field:F3,d_min,60,m,as published on /pso_configuration during the flight
+field:F4,monitoring_drones,3,count,mission_2026-02-24_14-18-23_0.db3
+field:F4,solves,56,count,
+field:F4,onstation_duration,700,s,
+field:F4,d_min,50,60,m

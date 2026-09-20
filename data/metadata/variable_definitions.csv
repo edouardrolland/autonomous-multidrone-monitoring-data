@@ -1,0 +1,182 @@
+dataset,variable,description,unit,type,allowed_values_or_notes
+field/coverage_commanded.csv,mission_id,Field mission identifier as used throughout the manuscript.,,string,"F1, F2, F3, F4"
+field/coverage_commanded.csv,solve,"Index of the PSO re-optimisation within its mission, in flight order.",,integer,
+field/coverage_commanded.csv,t_rel_s,Time since the start of the ROS bag.,s,numeric,
+field/coverage_commanded.csv,n_animals_perceived,Number of animals in the herd estimate the controller used for that solve.,count,integer,
+field/coverage_commanded.csv,v_commanded_left_flank,"Left-flank coverage of the commanded configuration, on the perceived herd.",,numeric,0-1
+field/coverage_commanded.csv,v_commanded_dorsal,"Dorsal coverage of the configuration the controller commanded, scored on the herd it perceived.",,numeric,0-1
+field/coverage_commanded.csv,v_commanded_right_flank,"Right-flank coverage of the commanded configuration, on the perceived herd.",,numeric,0-1
+field/missions.csv,mission_id,Field mission identifier as used throughout the manuscript.,,string,"F1, F2, F3, F4"
+field/missions.csv,mission_slug,Internal mission key: DDMMYY of the flight plus a mission index.,,string,"210226, 230226_m1, 240226_m1, 240226_m2"
+field/missions.csv,date,Date of the field mission.,,string,ISO 8601
+field/missions.csv,start_local,Local start time of the mission.,,string,"HH:MM, EAT (UTC+3)"
+field/missions.csv,bag,Filename of the ROS 2 bag recorded during the mission.,,string,
+field/missions.csv,scout_drone,Airframe flown as the nadir scout.,,string,"mini3, mini4"
+field/missions.csv,n_monitoring_drones,"Number of monitoring drones flown, excluding the scout.",count,integer,
+field/missions.csv,n_solves,Number of PSO re-optimisations flown in the mission.,count,integer,
+field/missions.csv,mean_solve_time_s,Mean PSO solving time over the mission's solves.,s,numeric,
+field/missions.csv,median_solve_time_s,Median PSO solving time over the mission's solves.,s,numeric,
+field/missions.csv,onstation_start_s,Start of the on-station window on the bag clock.,s,numeric,
+field/missions.csv,onstation_end_s,End of the on-station window on the bag clock.,s,numeric,
+field/missions.csv,onstation_duration_s,Duration of the on-station window.,s,numeric,
+field/missions.csv,n_gt_frames,Number of annotated scout frames in the mission.,count,integer,
+field/missions.csv,gt_frame_interval_s,Sampling interval of the ground-truth frames.,s,numeric,8
+field/missions.csv,scout_video_offset_s,Offset applied to align the scout video with the bag clock.,s,numeric,
+field/missions.csv,pso_w,PSO inertia weight in force during the mission.,,numeric,
+field/missions.csv,pso_c1,PSO cognitive coefficient in force during the mission.,,numeric,
+field/missions.csv,pso_c2,PSO social coefficient in force during the mission.,,numeric,
+field/monitoring_timeline_reps.csv,mission_id,Field mission identifier as used throughout the manuscript.,,string,"F1, F2, F3, F4"
+field/monitoring_timeline_reps.csv,solve,"Index of the PSO re-optimisation within its mission, in flight order.",,integer,
+field/monitoring_timeline_reps.csv,t_rel_s,Time since the start of the ROS bag.,s,numeric,
+field/monitoring_timeline_reps.csv,gt_frame,Index of the ground-truth scout frame within its mission.,,integer,
+field/monitoring_timeline_reps.csv,dt_to_frame_s,Time between the solve instant and the ground-truth frame it is attributed to.,s,numeric,|dt| <= 6
+field/monitoring_timeline_reps.csv,n_animals,Number of animals in the herd.,count,integer,
+field/monitoring_timeline_reps.csv,d_min_m,Minimum stand-off distance in force at the solve instant.,m,numeric,
+field/monitoring_timeline_reps.csv,omega_ceiling,Omega of a replay of the deployed solver on the ground-truth herd at the instant the field solve began: the reference C.,,numeric,0-1
+field/monitoring_timeline_reps.csv,omega_realised,"Omega of the poses actually flown, evaluated on the ground-truth herd at the same instant: the realised R.",,numeric,0-1
+field/monitoring_timeline_reps.csv,v_ceiling_left_flank,Left-flank coverage of the replayed ceiling configuration.,,numeric,0-1
+field/monitoring_timeline_reps.csv,v_ceiling_dorsal,Dorsal coverage of the replayed ceiling configuration.,,numeric,0-1
+field/monitoring_timeline_reps.csv,v_ceiling_right_flank,Right-flank coverage of the replayed ceiling configuration.,,numeric,0-1
+field/monitoring_timeline_reps.csv,v_realised_left_flank,Left-flank coverage of the flown poses.,,numeric,0-1
+field/monitoring_timeline_reps.csv,v_realised_dorsal,Dorsal coverage of the flown poses at that solve instant.,,numeric,0-1
+field/monitoring_timeline_reps.csv,v_realised_right_flank,Right-flank coverage of the flown poses.,,numeric,0-1
+field/monitoring_timeline_reps.csv,rep,PSO repetition index for a fixed herd.,,integer,0-4
+field/monitoring_timeline_reps.csv,seed,RNG seed of the replicated ceiling replay.,,integer,
+field/perception_frames.csv,mission_id,Field mission identifier as used throughout the manuscript.,,string,"F1, F2, F3, F4"
+field/perception_frames.csv,mission_slug,Internal mission key: DDMMYY of the flight plus a mission index.,,string,"210226, 230226_m1, 240226_m1, 240226_m2"
+field/perception_frames.csv,frame,Index of the annotated scout frame within its mission.,,integer,
+field/perception_frames.csv,file,Filename of the annotated scout frame in the public image dataset.,,string,
+field/perception_frames.csv,t_gcs,Ground-station wall-clock timestamp of the frame.,s,numeric,Unix epoch
+field/perception_frames.csv,t_srt,Timestamp read from the video SRT sidecar.,s,numeric,Unix epoch
+field/perception_frames.csv,video,Source video file the frame was extracted from.,,string,
+field/perception_frames.csv,scout_lat,Scout latitude at the frame timestamp.,deg,numeric,
+field/perception_frames.csv,scout_lon,Scout longitude at the frame timestamp.,deg,numeric,
+field/perception_frames.csv,scout_altitude_agl_m,Scout altitude above ground level.,m,numeric,
+field/perception_frames.csv,gimbal_pitch_deg,Scout gimbal pitch at the frame timestamp.,deg,numeric,-90 = nadir
+field/perception_frames.csv,gimbal_yaw_deg,Scout gimbal yaw at the frame timestamp.,deg,numeric,
+field/perception_frames.csv,focal_mm,Scout focal length reported in the video metadata.,mm,integer,
+field/perception_frames.csv,n_gt_labels,Number of human-labelled animal instances in the frame.,count,integer,
+field/perception_frames.csv,n_predictions,Number of detections the deployed system published for the frame.,count,integer,
+field/perception_frames.csv,proc_w,Width of the image the deployed detector processed.,px,integer,1280
+field/perception_frames.csv,proc_h,Height of the image the deployed detector processed.,px,integer,720
+field/perception_frames.csv,image_w,Width of the frame the annotator labelled.,px,integer,3840
+field/perception_frames.csv,image_h,Height of the frame the annotator labelled.,px,integer,2160
+field/perception_frames.csv,cam_fx,Camera focal length in pixels at the processing resolution.,px,numeric,
+field/perception_frames.csv,cam_cx,Principal point x at the processing resolution.,px,numeric,
+field/perception_frames.csv,cam_cy,Principal point y at the processing resolution.,px,numeric,
+field/perception_gt_labels.csv,mission_id,Field mission identifier as used throughout the manuscript.,,string,"F1, F2, F3, F4"
+field/perception_gt_labels.csv,frame,Index of the annotated scout frame within its mission.,,integer,
+field/perception_gt_labels.csv,label_idx,Index of a human label within its frame.,,integer,
+field/perception_gt_labels.csv,pixel_x,Horizontal pixel of the human label on the 3840x2160 scout frame.,px,integer,
+field/perception_gt_labels.csv,pixel_y,Vertical pixel of the human label on the 3840x2160 scout frame.,px,integer,
+field/perception_gt_labels.csv,heading_label_deg,"Body-axis heading as clicked by the annotator, 0 = image up, clockwise.",deg,numeric,blank where the annotator marked a centre but no axis
+field/perception_gt_labels.csv,lat,"Latitude, WGS-84.",deg,numeric,
+field/perception_gt_labels.csv,lon,"Longitude, WGS-84.",deg,numeric,
+field/perception_gt_labels.csv,axis_bearing_deg,"Geographic bearing of the body axis, obtained by mono-plotting both ends of a short axis segment through the deployed camera model. Undirected.",deg,numeric,"0 = north, clockwise"
+field/perception_predictions.csv,mission_id,Field mission identifier as used throughout the manuscript.,,string,"F1, F2, F3, F4"
+field/perception_predictions.csv,frame,Index of the annotated scout frame within its mission.,,integer,
+field/perception_predictions.csv,prediction_idx,Index of a deployed detection within its frame.,,integer,
+field/perception_predictions.csv,lat,"Latitude, WGS-84.",deg,numeric,
+field/perception_predictions.csv,lon,"Longitude, WGS-84.",deg,numeric,
+field/perception_predictions.csv,direction_deg,"Body-axis direction published by the deployed estimator, in its own image-angle convention.",deg,numeric,
+field/perception_predictions.csv,axis_bearing_deg,"Geographic bearing of the body axis, obtained by mono-plotting both ends of a short axis segment through the deployed camera model. Undirected.",deg,numeric,"0 = north, clockwise"
+field/pso_solves.csv,mission_id,Field mission identifier as used throughout the manuscript.,,string,"F1, F2, F3, F4"
+field/pso_solves.csv,day,"Field day of the mission, DDMMYY.",,integer,
+field/pso_solves.csv,mission_start,Local start time of the mission.,,string,HH:MM
+field/pso_solves.csv,solve_idx,"Index of the PSO re-optimisation within its mission, in flight order.",,integer,
+field/pso_solves.csv,herd_in_epoch,Timestamp at which the herd estimate entered the solver.,s,numeric,Unix epoch
+field/pso_solves.csv,solve_start_epoch,Timestamp at which the solve began.,s,numeric,Unix epoch
+field/pso_solves.csv,iters_end_epoch,Timestamp at which the PSO iterations finished.,s,numeric,Unix epoch
+field/pso_solves.csv,swarm_out_epoch,Timestamp at which the new configuration was published.,s,numeric,Unix epoch
+field/pso_solves.csv,compute_time_s,Time the PSO spent solving.,s,numeric,
+field/pso_solves.csv,herd_to_out_s,Latency from herd estimate to published configuration.,s,numeric,
+field/pso_solves.csv,n_iter_ticks,Number of PSO iteration ticks logged for the solve.,count,integer,
+field/pso_solves.csv,s_per_tick,Mean seconds per logged iteration tick.,s,numeric,
+field/pso_solves.csv,throttled,Whether the solve was throttled by the onboard scheduler.,,integer,"0 = no, 1 = yes"
+field/standoff_instants.csv,mission_id,Field mission identifier as used throughout the manuscript.,,string,"F1, F2, F3, F4"
+field/standoff_instants.csv,t_rel_s,Time since the start of the ROS bag.,s,numeric,
+field/standoff_instants.csv,drone_idx,"Index of a monitoring drone within its mission, ordered by altitude rung. The nadir scout is excluded.",,integer,0-2
+field/standoff_instants.csv,rung_altitude_m,Nominal altitude of the drone's deconfliction slot.,m,numeric,"30, 45, 60"
+field/standoff_instants.csv,closest_animal_distance_m,Distance from the drone to the nearest ground-truth animal at that instant.,m,numeric,
+field/standoff_instants.csv,d_min_required_m,"Minimum stand-off distance in force, read from the /pso_configuration topic of the bag.",m,numeric,50 or 60
+field/standoff_instants.csv,margin_m,"Signed clearance, closest_animal_distance_m minus d_min_required_m. Negative means a breach.",m,numeric,
+field/standoff_instants.csv,deficit_m,"Breach depth, zero when compliant.",m,numeric,
+field/standoff_instants.csv,compliant,Whether the stand-off constraint held at that drone-instant.,,boolean,True/False
+field/surface_coverage.csv,mission_id,Field mission identifier as used throughout the manuscript.,,string,"F1, F2, F3, F4"
+field/surface_coverage.csv,gt_frame,Index of the ground-truth scout frame within its mission.,,integer,
+field/surface_coverage.csv,t_rel_s,Time since the start of the ROS bag.,s,numeric,
+field/surface_coverage.csv,animal_idx,Index of a ground-truth animal within its frame. NOT a persistent individual identity: animals are not tracked across frames.,,integer,
+field/surface_coverage.csv,lat,"Latitude, WGS-84.",deg,numeric,
+field/surface_coverage.csv,lon,"Longitude, WGS-84.",deg,numeric,
+field/surface_coverage.csv,drone_idx,"Index of a monitoring drone within its mission, ordered by altitude rung. The nadir scout is excluded.",,integer,0-2
+field/surface_coverage.csv,surface,Surface of interest.,,string,"dorsal, left_flank, right_flank"
+field/surface_coverage.csv,visible_fraction,"Fraction of that animal's surface inside the drone's frame, unoccluded by another animal, and zero where the drone does not face the surface. V_k is the max over drones, averaged over animals.",,numeric,0-1
+field/surface_coverage.csv,on_target_herd,Whether the swarm was on the target herd at that frame. False marks mission entry and exit and F3's operator-driven switch to a new herd. The manuscript's pooled coverage percentages count every frame in the monitoring window; its per-mission coverage figure uses the on-target frames only.,,boolean,True/False
+simulation/herd_configurations.csv,behaviour,Simulated herd behavioural state that generated the configuration.,,string,"grazing, travelling, panic"
+simulation/herd_configurations.csv,config_idx,"Index of the herd configuration inside its regime; the nested product herd size x drones x factor1 x factor2, herd size outermost.",,integer,0-107; joins to herd_configurations.csv
+simulation/herd_configurations.csv,n_animals,Number of animals in the herd.,count,integer,
+simulation/herd_configurations.csv,n_drones,Number of monitoring drones (scalability/tuning designs) or the subset size in the viewpoint ablation.,count,integer,
+simulation/herd_configurations.csv,spread_std_x_m,Grazing herd dispersion along x.,m,numeric,"10, 20, 30"
+simulation/herd_configurations.csv,spread_std_z_m,Grazing herd dispersion along z.,m,numeric,"10, 20, 30"
+simulation/herd_configurations.csv,spread_std_m,Herd dispersion (travelling and panic designs).,m,numeric,"10, 20, 30 travelling; fixed 10 for panic"
+simulation/herd_configurations.csv,forward_velocity_ms,Herd forward speed.,m/s,numeric,"0.5, 1.0, 1.5 travelling; 1.0, 2.0, 4.0 panic"
+simulation/herd_configurations.csv,orientation_entropy_std_deg,Standard deviation of individual headings about the herd heading (panic design).,deg,numeric,"45, 180, 360"
+simulation/pso_controllers.csv,controller,PSO hyperparameter set under evaluation.,,string,"grazing, travelling, panic (specialists); generalist (untuned default w=0.7, c1=c2=1.5); deployed_field (flown in Kenya). The shared controller of the manuscript is not part of this release."
+simulation/pso_controllers.csv,w,PSO inertia weight.,,numeric,
+simulation/pso_controllers.csv,c1,PSO cognitive coefficient.,,numeric,
+simulation/pso_controllers.csv,c2,PSO social coefficient.,,numeric,
+simulation/pso_controllers.csv,kind,Role of the controller in the experimental design.,,string,"specialist, default, deployed"
+simulation/pso_tuning_best.csv,behaviour,Simulated herd behavioural state that generated the configuration.,,string,"grazing, travelling, panic"
+simulation/pso_tuning_best.csv,best_trial_id,trial_id of the campaign's winning trial.,,integer,
+simulation/pso_tuning_best.csv,w,PSO inertia weight.,,numeric,
+simulation/pso_tuning_best.csv,c1,PSO cognitive coefficient.,,numeric,
+simulation/pso_tuning_best.csv,c2,PSO social coefficient.,,numeric,
+simulation/pso_tuning_best.csv,median_monitoring_quality,Median Omega over the 108 configurations of a TPE trial; the quantity the tuner maximised.,,numeric,0-1
+simulation/pso_tuning_best.csv,n_trials,Number of completed TPE trials in the campaign.,count,integer,
+simulation/pso_tuning_trials.csv,behaviour,Simulated herd behavioural state that generated the configuration.,,string,"grazing, travelling, panic"
+simulation/pso_tuning_trials.csv,trial_id,TPE trial index within the tuning campaign of that regime.,,integer,1-100
+simulation/pso_tuning_trials.csv,loss,"TPE objective value, the negative of median_monitoring_quality.",,numeric,
+simulation/pso_tuning_trials.csv,median_monitoring_quality,Median Omega over the 108 configurations of a TPE trial; the quantity the tuner maximised.,,numeric,0-1
+simulation/pso_tuning_trials.csv,w,PSO inertia weight.,,numeric,
+simulation/pso_tuning_trials.csv,c1,PSO cognitive coefficient.,,numeric,
+simulation/pso_tuning_trials.csv,c2,PSO social coefficient.,,numeric,
+simulation/pso_tuning_trials.csv,eval_time_s,Wall-clock time to evaluate one TPE trial (all 108 configurations).,s,numeric,
+simulation/pso_tuning_trials.csv,timestamp,Wall-clock timestamp at which the trial finished.,,string,YYYYMMDD_HHMMSS
+simulation/pso_validation_config_means.csv,behaviour,Simulated herd behavioural state that generated the configuration.,,string,"grazing, travelling, panic"
+simulation/pso_validation_config_means.csv,controller,PSO hyperparameter set under evaluation.,,string,"grazing, travelling, panic (specialists); generalist (untuned default w=0.7, c1=c2=1.5); deployed_field (flown in Kenya). The shared controller of the manuscript is not part of this release."
+simulation/pso_validation_config_means.csv,config_idx,"Index of the herd configuration inside its regime; the nested product herd size x drones x factor1 x factor2, herd size outermost.",,integer,0-107; joins to herd_configurations.csv
+simulation/pso_validation_config_means.csv,mean_monitoring_quality,Mean Omega over the snapshots and repetitions of one configuration. This is the statistical unit of the validation tests.,,numeric,0-1
+simulation/pso_validation_runs.csv,behaviour,Simulated herd behavioural state that generated the configuration.,,string,"grazing, travelling, panic"
+simulation/pso_validation_runs.csv,config_idx,"Index of the herd configuration inside its regime; the nested product herd size x drones x factor1 x factor2, herd size outermost.",,integer,0-107; joins to herd_configurations.csv
+simulation/pso_validation_runs.csv,n_animals,Number of animals in the herd.,count,integer,
+simulation/pso_validation_runs.csv,n_drones,Number of monitoring drones (scalability/tuning designs) or the subset size in the viewpoint ablation.,count,integer,
+simulation/pso_validation_runs.csv,snapshot_idx,Index of the herd snapshot sampled from the simulated trajectory.,,integer,0-2
+simulation/pso_validation_runs.csv,snapshot_time_s,Time of the snapshot along the simulated trajectory.,s,numeric,
+simulation/pso_validation_runs.csv,rep_idx,PSO repetition index for a fixed snapshot.,,integer,0-9
+simulation/pso_validation_runs.csv,controller,PSO hyperparameter set under evaluation.,,string,"grazing, travelling, panic (specialists); generalist (untuned default w=0.7, c1=c2=1.5); deployed_field (flown in Kenya). The shared controller of the manuscript is not part of this release."
+simulation/pso_validation_runs.csv,monitoring_quality,"Monitoring quality Omega of the solved configuration, as defined and implemented by the deployed objective.",,numeric,0-1
+simulation/pso_validation_runs.csv,best_fitness,Best PSO fitness value reached (the solver's internal cost).,,numeric,
+simulation/scalability_runs.csv,run_id,Unique identifier of one scalability optimisation run.,,string,
+simulation/scalability_runs.csv,behaviour,Simulated herd behavioural state that generated the configuration.,,string,"grazing, travelling, panic"
+simulation/scalability_runs.csv,N_a,Herd size of the scalability cell.,count,integer,"10, 25, 50, 75, 100 (main grid); 150, 200, 300 (large-herd grid)"
+simulation/scalability_runs.csv,sigma,Isotropic spatial dispersion of the simulated herd.,m,numeric,10-100 in steps of 10
+simulation/scalability_runs.csv,herd_idx,"Index of the independently seeded herd within its (N_a, sigma) cell.",,integer,0-9
+simulation/scalability_runs.csv,M,Number of monitoring drones of the scalability cell.,count,integer,1-9
+simulation/scalability_runs.csv,rep,PSO repetition index for a fixed herd.,,integer,0-4
+simulation/scalability_runs.csv,min_sep,Minimum animal-animal separation enforced when sampling the herd.,m,numeric,
+simulation/scalability_runs.csv,herd_seed,RNG seed that generated the herd.,,integer,
+simulation/scalability_runs.csv,pso_seed,RNG seed of the PSO particle initialisation.,,integer,
+simulation/scalability_runs.csv,V1,Herd-average dorsal coverage of the solved configuration.,,numeric,0-1
+simulation/scalability_runs.csv,V2,Herd-average left-flank coverage.,,numeric,0-1
+simulation/scalability_runs.csv,V3,Herd-average right-flank coverage.,,numeric,0-1
+simulation/scalability_runs.csv,minV,"Worst of the three surface coverages, min_k V_k.",,numeric,0-1
+simulation/scalability_runs.csv,per_animal_min_mean,Herd mean of each animal's worst-covered surface.,,numeric,0-1
+simulation/scalability_runs.csv,per_animal_min_p10,10th percentile over animals of the worst-covered surface.,,numeric,0-1
+simulation/scalability_runs.csv,Omega,Monitoring quality of the solved configuration.,,numeric,0-1
+simulation/scalability_runs.csv,Delta,Framing/identification term of the objective.,,numeric,
+simulation/scalability_runs.csv,Lambda_dist,Stand-off penalty term of the objective.,,numeric,
+simulation/scalability_runs.csv,Lambda_idle,Idle-drone penalty term of the objective.,,numeric,
+simulation/scalability_runs.csv,convergence_iter,PSO iteration at which the global best last improved.,count,integer,
+simulation/scalability_runs.csv,poses,"Solved drone configuration, four numbers per drone (x, z, yaw, tilt).",,string,space-separated
+simulation/scalability_runs.csv,status,Termination status of the optimisation run.,,string,ok
+simulation/scalability_runs.csv,t_solve,"Wall-clock time of one PSO solve, measured with 24 concurrent single-threaded workers on an Intel Core i7-13700HX.",s,numeric,

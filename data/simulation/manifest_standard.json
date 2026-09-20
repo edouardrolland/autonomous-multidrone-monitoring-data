@@ -1,0 +1,47 @@
+{
+  "grid": "standard",
+  "n_tasks": 22500,
+  "workers": 24,
+  "git_commit": "87bc88477a5ecc651cc2afd29d721a0d865709b7",
+  "fixed": {
+    "fov_deg": 82.9,
+    "framing_exponent": 4,
+    "start_altitude": 30.0,
+    "vertical_separation": 15.0,
+    "distance_min_identification": 60,
+    "distance_max_identification": 150,
+    "search_buffer_m": 100.0,
+    "number_of_particles": 100,
+    "number_of_pso_iteration": 100,
+    "w": 0.567,
+    "c1": 2.196,
+    "c2": 0.872
+  },
+  "pso_params": {
+    "swarm_size": 100,
+    "iterations": 100,
+    "decay": 0,
+    "w": 0.567,
+    "c1": 2.196,
+    "c2": 0.872,
+    "verbose": false,
+    "use_patience": false,
+    "use_centroid_bounds": true,
+    "start_init": "random"
+  },
+  "thread_env": {
+    "OMP_NUM_THREADS": "1",
+    "OPENBLAS_NUM_THREADS": "1",
+    "MKL_NUM_THREADS": "1",
+    "NUMEXPR_NUM_THREADS": "1",
+    "VECLIB_MAXIMUM_THREADS": "1"
+  },
+  "versions": {
+    "python": "3.10.12",
+    "numpy": "2.2.6",
+    "numba": "0.62.1",
+    "pandas": "2.3.3",
+    "scipy": "1.15.3"
+  },
+  "started": "2026-08-27T10:46:13"
+}
